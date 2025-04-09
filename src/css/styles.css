@@ -14,23 +14,48 @@ p {
 }
 
 :root {
-  --dark-bg-1: #252b4b;
+  --dark-bg-1: #2b3541;
   --light-bg: #f7f7f7;
-  --primary: #592a30;
+  --primary: #169be6;
   --light-text-1: #fafbfc;
   --light-text-2: #8f8c8c;
   --dark-text-1: #1a1a1a;
   --dark-text-2: #4e4b66;
   --subtitle: #707070;
+
+  --section-padding: 3rem 1rem 4rem 1rem;
 }
 
-span,
-a,
-p,
+html {
+  background: var(--dark-bg-1);
+}
+
 h1,
 h2,
 h3 {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Alfa Slab One", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--primary);
+}
+
+button,
+label,
+input,
+textarea,
+span,
+a,
+p {
+  font-family: "Nunito Sans", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--light-text-1);
+}
+
+h1 {
+  font-size: 64px;
+  letter-spacing: 4px;
+}
+
+h2 {
+  font-size: 48px;
+  letter-spacing: 4px;
 }
 
 ul {
@@ -38,14 +63,155 @@ ul {
   padding: unset;
 }
 
+.wrapper {
+  margin-inline: auto;
+}
+
+section {
+  padding: var(--section-padding);
+}
+
+.button-transition:hover {
+  background: var(--light-bg) !important;
+  color: var(--primary) !important;
+  transition: all 0.3s ease-in-out;
+}
+
 @media (min-width: 0px) {
+  h1 {
+    text-align: start;
+    margin-bottom: 1rem;
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 32px;
+    text-align: start;
+  }
+  
+  .hero-tagline{
+    display: block;
+    font-size: 24px;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero .wrapper p {
+    text-align: start;
+    max-width: 80ch;
+    margin-inline: auto;
+    margin-bottom: 2rem;
+  }
+
+  .hero .wrapper .socials {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero .wrapper .socials a {
+    background: var(--primary);
+    width: 60px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contact-form .wrapper h2 {
+    margin-bottom: 1rem;
+  }
+
+  .contact-form .wrapper p {
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-form .wrapper form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .contact-form .wrapper form label {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .contact-form .wrapper form button {
+    justify-self: center;
+    padding: 8px 3rem;
+    background: var(--primary);
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    margin-top: 1rem;
+  }
+
+  .contact-form .wrapper form input {
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    color: #666666;
+  }
+
+  .contact-form .wrapper form textarea {
+    padding: 1rem 1rem;
+    border-radius: 4px;
+    color: #666666;
+    min-height: 90px;
+  }
 }
 
 @media (min-width: 768px) {
+  h1 {
+    font-size: 64px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 48px;
+    text-align: center;
+  }
+  
+  .hero-tagline{
+    text-align: center;  
+  }
+
+  .wrapper {
+    max-width: 768px;
+  }
+
+  .hero .wrapper .socials {
+    justify-content: center;
+  }
+  
+  .contact-form .wrapper p{
+    text-align: center;
+  }
+
+  .contact-form .wrapper form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .contact-form .wrapper form .textarea {
+    grid-column: span 2;
+  }
+
+  .contact-form .wrapper form button {
+    grid-column: span 2;
+    cursor: pointer;
+  }
 }
 
 @media (min-width: 1024px) {
+  .wrapper {
+    max-width: 1024px;
+  }
 }
 
 @media (min-width: 1440px) {
+  .wrapper {
+    max-width: 1440px;
+  }
 }
