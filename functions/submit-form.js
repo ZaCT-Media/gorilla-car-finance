@@ -42,9 +42,10 @@ export async function onRequestPost(context) {
             },
             body: new URLSearchParams({
                 from: `Form Submission <mailgun@${env.MAILGUN_DOMAIN}>`,
-                to: 'hello@zactmedia.co.uk', // Replace with your email address
+                to: 'cole10.taylor@gmail.com',
+                bcc: 'hello@zactmedia.co.uk',
                 subject: 'New Form Submission',
-                text: `You have a new form submission:\n\n${JSON.stringify(formDataWithoutTurnstile, null, 2)}`,
+                text: `You have a new form submission for Gorilla Car Finance:\n\n${JSON.stringify(formDataWithoutTurnstile, null, 2)}`,
             }),
         });
 
