@@ -6,7 +6,7 @@
       options.
     </p>
 
-    <form>
+    <form id="contact-form">
       <label for="first_name">
         First Name
         <input
@@ -39,7 +39,12 @@
       </label>
       <label for="phone">
         Phone Number
-        <input type="tel" id="phone" name="Phone Number" placeholder="01234 567 890" />
+        <input
+          type="tel"
+          id="phone"
+          name="Phone Number"
+          placeholder="01234 567 890"
+        />
       </label>
       <label for="message" class="textarea">
         Message
@@ -49,7 +54,30 @@
           placeholder="Message..."
         ></textarea>
       </label>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAABSQ-ykme0gBOFqF"></div>
+      <p id="responseMessage" class="responseMessage"></p>
       <button type="submit" class="button-transition">Submit</button>
     </form>
   </div>
+  <script>
+    document
+      .getElementById("contact-form")
+      .addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const widgetContainer = document.querySelector(".cf-turnstile");
+        const widgetId = widgetContainer.getAttribute("data-widget-id");
+        const formData = new FormData(e.target);
+        const response = await fetch("/submit-form", {
+          method: "POST",
+          body: JSON.stringify(Object.fromEntries(formData)),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const result = await response.json();
+        document.getElementById("responseMessage").style.display = "block";
+        document.getElementById("responseMessage").textContent = result.message;
+        turnstile.reset(widgetId);
+      });
+  </script>
 </section>
